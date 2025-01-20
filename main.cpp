@@ -25,12 +25,18 @@ bool sendReminder(string title, string body) {
     return true;
 }
 
-bool isTime(int h, int m) {
+tm* getLocalTime() {
     // First we get the time
     time_t now = time(0);
 
     // Then we convert to local time
     tm* localTime = localtime(&now);
+    return localTime;
+}
+
+bool isTime(int h, int m) {
+
+    tm* localTime = getLocalTime();
 
     // then we extract the hour and minute
     int hour = localTime->tm_hour;
@@ -66,11 +72,7 @@ int main(int argc, char * argv[] )
     notify_init("Forget, What?");
 
     while (true) {
-        // First we get the time
-        time_t now = time(0);
-
-        // Then we convert to local time
-        tm* localTime = localtime(&now);
+        tm* localTime = getLocalTime();
 
         // then we extract thee minute
         int min = localTime->tm_min;
@@ -80,7 +82,6 @@ int main(int argc, char * argv[] )
         }
         lastMin = min;
     }
-
 
     return 0;
 }
