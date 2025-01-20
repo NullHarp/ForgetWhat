@@ -58,7 +58,6 @@ int main(int argc, char * argv[] )
 {
     std::ifstream reminderFile("reminders.json");
 
-    // If f.fail() returns 0 or 1 based off if we got the file or not
     if(reminderFile.fail()) {
         std::cerr << "Couldent parse the reminders.json file, is it in this directory?" << std::endl;
     }
