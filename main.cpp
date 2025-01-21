@@ -66,6 +66,7 @@ int main(int argc, char * argv[] )
 
     if(reminderFile.fail()) {
         std::cerr << "Couldent parse the reminders.json file, is it in this directory?" << std::endl;
+        return -1;
     }
     json data = json::parse(reminderFile);
 
